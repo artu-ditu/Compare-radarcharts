@@ -7,16 +7,16 @@
 
 <body>
 
-<canvas id="myCanvas" width="600" height="600" style="border:1px solid #000000; display: none">
+<canvas id="myCanvas" width="700" height="700" style="border:1px solid #000000; display: none">
 </canvas>
 
 <script>
 
-var messiStats = new Array(0.79,5.71,45.9,85.1,0.40,2.70,0.40,0.58,2.48,5.10,17.6);
-var gerrardStats = new Array(86.2,1.98,.24,.44,.48,.62,1.06,50,2.98,1.51,7.49);
-var alexsandroStats = new Array(2.415,2.22,84.6,1.95,1.37,31.5,1.91,1.44,1.6,1.675,79.48);
-var vandijkStats = new Array(84.2,84.8,1.9,2.6,6.9,0.73,0.87,75.4,4.75,62.6,4.71);
-var comparisonStats = new Array(1,1,1,1,1,1,1,1,1,1,1);
+var messiStats = new Array(0.79,5.71,45.9,85.1,0.40,2.70,0.40,0.58,2.48,5.10,17.6,15,15);
+var gerrardStats = new Array(86.2,1.98,.24,.44,.48,.62,1.06,50,2.98,1.51,7.49,15,15);
+var alexsandroStats = new Array(2.415,2.22,84.6,1.95,1.37,31.5,1.91,1.44,1.6,1.675,79.48,15,15);
+var vandijkStats = new Array(84.2,84.8,1.9,2.6,6.9,0.73,0.87,75.4,4.75,62.6,4.71,15,15);
+var comparisonStats = new Array(1,1,1,1,1,1,1,1,1,1,1,1,1);
 
 var playerStats = messiStats.slice(0);
 var compStats = gerrardStats.slice(0);
@@ -31,15 +31,17 @@ function StatInfo(statName,statMin,statMax) {
 var fwLabels = new Array();
 fwLabels[0] = new StatInfo("Non-Penalty Goals",0.05,0.65);
 fwLabels[1] = new StatInfo("Strzaly",1.2,4);
-fwLabels[2] = new StatInfo("Celnosc strzalow%",28,56);
-fwLabels[3] = new StatInfo("Celnosc podan%",65,85);
-fwLabels[4] = new StatInfo("Asysty",0.06,0.34);
-fwLabels[5] = new StatInfo("Wykreowane szanse",0.6,2.6);
-fwLabels[6] = new StatInfo("Odbiory i przechwyty",0.5,3.7);
-fwLabels[7] = new StatInfo("Utrata posiadania",3,1);
-fwLabels[8] = new StatInfo("Skutecznosc dryblingów%",34,70);
-fwLabels[9] = new StatInfo("Udane dryblingi",0.4,2.8);
-fwLabels[10] = new StatInfo("Goal Conversion%",5,23);
+fwLabels[2] = new StatInfo("Strzaly w polu karnym",0.5,2.7);
+fwLabels[3] = new StatInfo("Celnosc strzalow%",28,56);
+fwLabels[4] = new StatInfo("Celnosc podan%",65,85);
+fwLabels[5] = new StatInfo("Asysty",0.06,0.34);
+fwLabels[6] = new StatInfo("Wykreowane szanse",0.6,2.6);
+fwLabels[7] = new StatInfo("Wyk. szanse z otwartej gry",0.5,2);
+fwLabels[8] = new StatInfo("Odbiory i przechwyty",0.5,3.7);
+fwLabels[9] = new StatInfo("Utrata posiadania",3,1);
+fwLabels[10] = new StatInfo("Skutecznosc dryblingów%",34,70);
+fwLabels[11] = new StatInfo("Udane dryblingi",0.4,2.8);
+fwLabels[12] = new StatInfo("Skutecznosc strzalow%",5,23);
 
 var cmLabels = new Array();
 cmLabels[0] = new StatInfo("Celnosc podan%",74,90);
@@ -49,23 +51,27 @@ cmLabels[3] = new StatInfo("Strzaly",0.3,2.1);
 cmLabels[4] = new StatInfo("Udane dryblingi",0.3,2.1);
 cmLabels[5] = new StatInfo("Utrata posiadania",2.1,0.5);
 cmLabels[6] = new StatInfo("Faule",2.6,0.6);
-cmLabels[7] = new StatInfo("Odbiory/proby%",50,74);
-cmLabels[8] = new StatInfo("Udane odbiory PAdj",1.2,4);
-cmLabels[9] = new StatInfo("Przechwyty PAdj",1,3.4);
-cmLabels[10] = new StatInfo("Celne dlugie podania",1.2,6);
+cmLabels[7] = new StatInfo("Wygrane w powietrzu",0.5,3.3);
+cmLabels[8] = new StatInfo("Odbiory/proby%",50,74);
+cmLabels[9] = new StatInfo("Udane odbiory PAdj",1.2,4);
+cmLabels[10] = new StatInfo("Przechwyty PAdj",1,3.4);
+cmLabels[11] = new StatInfo("Celnosc dlugich podan%",45,77);
+cmLabels[12] = new StatInfo("Celne dlugie podania",1.2,6);
 
 var fbLabels = new Array();
 fbLabels[0] = new StatInfo("Udane odbiory PAdj",1,3.4);
 fbLabels[1] = new StatInfo("Przechwyty PAdj",1,3);
 fbLabels[2] = new StatInfo("Celnosc podan%",70,86);
-fbLabels[3] = new StatInfo("Wykreowane szanse",0.4,1.6);
-fbLabels[4] = new StatInfo("Celne dosrodkowania",0.4,1.2);
-fbLabels[5] = new StatInfo("Celnosc dosrodkowan%",13,33);
-fbLabels[6] = new StatInfo("Udane dryblingi",0.4,1.6);
-fbLabels[7] = new StatInfo("Utrata posiadania",1.4,0.2);
-fbLabels[8] = new StatInfo("Wygrane w powietrzu",0.5,2.5);
-fbLabels[9] = new StatInfo("Faule",2.1,0.5);
-fbLabels[10] = new StatInfo("Odbiory/proby%",60,84);
+fbLabels[3] = new StatInfo("Asysty + NPG",0.03,0.33);
+fbLabels[4] = new StatInfo("Wykreowane szanse",0.4,1.6);
+fbLabels[5] = new StatInfo("Celne dosrodkowania",0.4,1.2);
+fbLabels[6] = new StatInfo("Celnosc dosrodkowan%",13,33);
+fbLabels[7] = new StatInfo("Udane dryblingi",0.4,1.6);
+fbLabels[8] = new StatInfo("Utrata posiadania",1.4,0.2);
+fbLabels[9] = new StatInfo("Wygrane w powietrzu",0.5,2.5);
+fbLabels[10] = new StatInfo("Faule",2.1,0.5);
+fbLabels[11] = new StatInfo("Wybicia PAdj",1.2,4);
+fbLabels[12] = new StatInfo("Odbiory/proby%",60,84);
 
 var cbLabels = new Array();
 cbLabels[0] = new StatInfo("Celnosc podan%",70,90);
@@ -75,21 +81,23 @@ cbLabels[3] = new StatInfo("Przechwyty PAdj",1,3.4);
 cbLabels[4] = new StatInfo("Wybicia PAdj",2.8,8);
 cbLabels[5] = new StatInfo("Bloki/strzaly",0.033,0.085);
 cbLabels[6] = new StatInfo("Faule",1.86,0.42);
-cbLabels[7] = new StatInfo("Wygrane w powietrzu%",52,76);
-cbLabels[8] = new StatInfo("Wygrane w powietrzu",1.2,4);
-cbLabels[9] = new StatInfo("Celnosc dlugich podan%",40,76);
-cbLabels[10] = new StatInfo("Celne dlugie podania",2,6.4);
+cbLabels[7] = new StatInfo("Utrata posiadania",0.45,0.03);
+cbLabels[8] = new StatInfo("Wygrane w powietrzu%",52,76);
+cbLabels[9] = new StatInfo("Wygrane w powietrzu",1.2,4);
+cbLabels[10] = new StatInfo("Wykreowane szanse",0.03,0.41);
+cbLabels[11] = new StatInfo("Celnosc dlugich podan%",40,76);
+cbLabels[12] = new StatInfo("Celne dlugie podania",2,6.4);
 
 
 var curStats = fwLabels;
 
-var canvasHeight = 600;
-var canvasWidth = 600;
+var canvasHeight = 700;
+var canvasWidth = 700;
 playerColor1 = "rgba(0, 0, 0, 0.6)";
 playerColor2 = "rgba(0, 0, 0, 0.6)";
 templatename = "brak"
 templatex = 261;
-labelFontSize = 10;
+labelFontSize = 11;
 valueFontSize = 10;
 numrings = 5;
 rotOffset = -Math.PI/2;//(fwLabels.length)/2;
@@ -119,7 +127,7 @@ function reassign() {
 	curStats = new Array();
 	var count = 0;
 	
-	for(var j = 0; j < 11; j++) {
+	for(var j = 0; j < 13; j++) {
 	
 		if(document.getElementById("name"+j).value != "") {
 		
@@ -144,7 +152,7 @@ function reassign() {
 	curStats = new Array();
 	count = 0;
 	
-	for(var j = 0; j < 11; j++) {
+	for(var j = 0; j < 13; j++) {
 	
 		if(document.getElementById("name"+j).value != "") {
 		
@@ -278,10 +286,10 @@ ctx.restore();
 ctx.save();
 ctx.fillStyle = playerColorText1;
 ctx.font = "bold 15px Calibri";
-ctx.fillText(document.getElementById("playerName").value + ", " + document.getElementById("playerAge").value, -280, -280);
-ctx.fillText(document.getElementById("playerClub").value, -280, -263);
-ctx.fillText(document.getElementById("playerLeague").value, -280, -246);
-ctx.fillText(document.getElementById("playerSeason").value, -280, -229);
+ctx.fillText(document.getElementById("playerName").value + ", " + document.getElementById("playerAge").value, -330, -330);
+ctx.fillText(document.getElementById("playerClub").value, -330, -313);
+ctx.fillText(document.getElementById("playerLeague").value, -330, -296);
+ctx.fillText(document.getElementById("playerSeason").value, -330, -279);
 ctx.restore();
 
 ctx.save();
@@ -291,17 +299,17 @@ var comp1 = document.getElementById("compName").value + ", " + document.getEleme
 var comp2 = document.getElementById("compClub").value;
 var comp3 = document.getElementById("compLeague").value;
 var comp4 = document.getElementById("compSeason").value;
-ctx.fillText(comp1, 280-ctx.measureText(comp1).width, -280);
-ctx.fillText(comp2, 280-ctx.measureText(comp2).width, -263);
-ctx.fillText(comp3, 280-ctx.measureText(comp3).width, -246);
-ctx.fillText(comp4, 280-ctx.measureText(comp4).width, -229);
+ctx.fillText(comp1, 330-ctx.measureText(comp1).width, -330);
+ctx.fillText(comp2, 330-ctx.measureText(comp2).width, -313);
+ctx.fillText(comp3, 330-ctx.measureText(comp3).width, -296);
+ctx.fillText(comp4, 330-ctx.measureText(comp4).width, -279);
 ctx.restore();
 
 ctx.save();
 ctx.fillStyle = "black";
 ctx.font = "bold 15px Calibri";
-ctx.fillText(templatename, -280, 280);
-ctx.fillText("via whoscored", 200, 280);
+ctx.fillText(templatename, -330, 330);
+ctx.fillText("via whoscored", 250, 330);
 ctx.restore();
 
 // draw labels
@@ -353,7 +361,7 @@ function fillFW() {
 		document.getElementById('comp'+i).value = comparisonStats[i];
 	}
 	templatename = "FW/AM";
-	templatex = 242;
+	templatex = 292;
 	drawPlot();
 }
 
@@ -366,7 +374,7 @@ function fillCM() {
 		document.getElementById('comp'+i).value = comparisonStats[i];
 	}
 	templatename = "CM";
-	templatex = 269;
+	templatex = 319;
 	drawPlot();
 }
 
@@ -379,7 +387,7 @@ function fillFB() {
 		document.getElementById('comp'+i).value = comparisonStats[i];
 	}
 	templatename = "FB";
-	templatex = 274;
+	templatex = 324;
 	drawPlot();
 }
 
@@ -392,7 +400,7 @@ function fillCB() {
 		document.getElementById('comp'+i).value = comparisonStats[i];
 	}
 	templatename = "CB";
-	templatex = 273;
+	templatex = 323;
 	drawPlot();
 }
 
@@ -417,6 +425,8 @@ function fillCB() {
 <tr><td><input onClick="this.select();" id="name8" type="text" class="slabel" size="8"></td><td><input onClick="this.select();" id="min8" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="max8" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="stat8" type="textarea" size="1"></td><td><input onClick="this.select();" id="comp8" type="textarea" size="1"></td></tr>
 <tr><td><input onClick="this.select();" id="name9" type="text" class="slabel" size="8"></td><td><input onClick="this.select();" id="min9" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="max9" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="stat9" type="textarea" size="1"></td><td><input onClick="this.select();" id="comp9" type="textarea" size="1"></td></tr>
 <tr><td><input onClick="this.select();" id="name10" type="text" class="slabel" size="8"></td><td><input onClick="this.select();" id="min10" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="max10" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="stat10" type="textarea" size="1"></td><td><input onClick="this.select();" id="comp10" type="textarea" size="1"></td></tr>
+<tr><td><input onClick="this.select();" id="name11" type="text" class="slabel" size="8"></td><td><input onClick="this.select();" id="min11" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="max11" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="stat11" type="textarea" size="1"></td><td><input onClick="this.select();" id="comp11" type="textarea" size="1"></td></tr>
+<tr><td><input onClick="this.select();" id="name12" type="text" class="slabel" size="8"></td><td><input onClick="this.select();" id="min12" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="max12" type="text" class="snumber" size="1"></td><td><input onClick="this.select();" id="stat12" type="textarea" size="1"></td><td><input onClick="this.select();" id="comp12" type="textarea" size="1"></td></tr>
 </tbody>
 </table>
 <span class="ilabel">possession1: </span><input onClick="this.select();" id="possession" value="50" type="textarea" size="1">
@@ -465,9 +475,9 @@ function fillCB() {
 <span class="ilabel">G: </span><input onClick="this.select();" id="greenRGB2" value="150" type="textarea" size="1">
 <span class="ilabel">B: </span><input onClick="this.select();" id="blueRGB2" value="255" type="textarea" size="1"><br>
 <br>
-<span class="ilabel">width: </span><input onClick="this.select();" id="cwidth" value="600" type="textarea" size="1">
+<span class="ilabel">width: </span><input onClick="this.select();" id="cwidth" value="700" type="textarea" size="1">
 <br>
-<span class="ilabel">height: </span><input onClick="this.select();" id="cheight" value="600" type="textarea" size="1">
+<span class="ilabel">height: </span><input onClick="this.select();" id="cheight" value="700" type="textarea" size="1">
 
 </div>
 
