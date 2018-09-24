@@ -139,14 +139,18 @@
 				
 			playerStats[count] = parseFloat(document.getElementById("stat"+j).value)
 			
-			if(curStats[count].statName == "Udane odbiory PAdj" 
+			if(curStats[count].statName == "Udane odbiory PAdj"
 				|| curStats[count].statName == "Przechwyty PAdj" 
+				|| curStats[count].statName == "Zablokowane podania PAdj" 
 				|| curStats[count].statName == "Wybicia PAdj") 
 				playerStats[count] = playerStats[count] * 2/(1 + Math.pow(2.71828,(-0.1*(document.getElementById("possession").value-50))));
 			
-			if(curStats[count].statName == "Bloki/strzaly")
-				playerStats[count] = playerStats[count]/document.getElementById("shotsfaced").value;
+			if(curStats[count].statName == "Utraty posiadania PAdj") 
+				playerStats[count] = playerStats[count] * 2/(1 + Math.pow(2.71828,(0.1*(document.getElementById("possession").value-50))));
 			
+			if(curStats[count].statName == "Bloki/strzały")
+				playerStats[count] = playerStats[count]/document.getElementById("shotsfaced").value;
+				
 			count++;
 		}
 	}
