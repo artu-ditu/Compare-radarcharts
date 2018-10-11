@@ -383,14 +383,14 @@
                 ctx.fillText(curStats[i].statName, 0, r+20);
                 for(var j = 0; j < 9; j++) {
                     ctx.font = "bold " + valueFontSize + "px Arial";
-                    ctx.fillText(Math.round((curStats[i].statMin+j*(curStats[i].statMax-curStats[i].statMin)/8)*1000)/1000, 0, (r/(numrings*2))*(j+1)+lw+3);
+                    ctx.fillText(Math.round((curStats[i].statMin+j*(curStats[i].statMax-curStats[i].statMin)/8)*100)/100, 0, (r/(numrings*2))*(j+1)+lw+3);
                 }
             } else {
                 ctx.rotate(rad1+Math.PI/2);
                 ctx.fillText(curStats[i].statName, 0, -r-15);
                 for(var j = 0; j < 9; j++) {
                     ctx.font = "bold " + valueFontSize + "px Arial";
-                    ctx.fillText(Math.round((curStats[i].statMin+j*(curStats[i].statMax-curStats[i].statMin)/8)*1000)/1000, 0, -(r/(numrings*2))*(j+1)-lw+valueFontSize/2);
+                    ctx.fillText(Math.round((curStats[i].statMin+j*(curStats[i].statMax-curStats[i].statMin)/8)*100)/100, 0, -(r/(numrings*2))*(j+1)-lw+valueFontSize/2);
                 }
             }
             
