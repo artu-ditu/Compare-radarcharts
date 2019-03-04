@@ -409,14 +409,18 @@
                 ctx.fillText(templateStats[i].statName, 0, r+20);
                 for(var j = 0; j < 9; j++) {
                     ctx.font = "bold " + valueFontSize + "px Arial";
-                    ctx.fillText(Math.round((templateStats[i].statMin+j*(templateStats[i].statMax-templateStats[i].statMin)/8)*100)/100, 0, (r/(numrings*2))*(j+1)+lw+3);
+					var val = templateStats[i].statMin + j * (templateStats[i].statMax-templateStats[i].statMin) / 8;
+					val > 1 ? val = val.toPrecision(3) : val = val.toFixed(2);
+                    ctx.fillText(val, 0, (r/(numrings*2))*(j+1)+lw+3);
                 }
             } else {
                 ctx.rotate(rad1+Math.PI/2);
                 ctx.fillText(templateStats[i].statName, 0, -r-15);
                 for(var j = 0; j < 9; j++) {
                     ctx.font = "bold " + valueFontSize + "px Arial";
-                    ctx.fillText(Math.round((templateStats[i].statMin+j*(templateStats[i].statMax-templateStats[i].statMin)/8)*100)/100, 0, -(r/(numrings*2))*(j+1)-lw+valueFontSize/2);
+					var val = templateStats[i].statMin + j * (templateStats[i].statMax-templateStats[i].statMin) / 8;
+					val > 1 ? val = val.toPrecision(3) : val = val.toFixed(2);
+                    ctx.fillText(val, 0, -(r/(numrings*2))*(j+1)-lw+valueFontSize/2);
                 }
             }
             
